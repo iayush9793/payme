@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     qrLoader.classList.add('active');
 
     // Use local hardcoded qrcode.jpg image
-    qrCodeImg.src = 'qrcode.jpg';
+    qrCodeImg.src = 'qr.png';
 
     qrCodeImg.onload = () => {
       qrLoader.classList.remove('active');
