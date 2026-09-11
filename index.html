@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6th Anniversary Payment Gateway</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap"
+    rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Animated Anniversary Background Elements -->
+  <div class="anniversary-bg">
+    <div class="floating-balloon gold"></div>
+    <div class="floating-balloon purple"></div>
+    <div class="floating-balloon gold flex-balloon"></div>
+    <div class="floating-balloon purple flex-balloon"></div>
+    <div class="sparkle element-1">★</div>
+    <div class="sparkle element-2">✦</div>
+    <div class="sparkle element-3">★</div>
+    <div class="sparkle element-4">✦</div>
+  </div>
+
+  <div class="app-container">
+    <!-- Main Card -->
+    <main class="payment-card">
+
+      <!-- Anniversary Header -->
+      <header class="card-header">
+        <div class="anniversary-badge">
+          <span class="badge-text">6 Years of Trust</span>
+        </div>
+        <h1 class="anniversary-title">Happy 6<sup>th</sup> Anniversary!</h1>
+        <p class="anniversary-subtitle">Celebrate with us and secure your transaction instantly.</p>
+        <div class="anniversary-divider">
+          <span class="line"></span>
+          <span class="star"><i class="fa-solid fa-star"></i></span>
+          <span class="line"></span>
+        </div>
+      </header>
+
+      <!-- Grid Layout for QR Code and Form -->
+      <div class="card-grid">
+
+        <!-- Left Side: QR Code Panel -->
+        <section class="qr-panel">
+          <h2 class="section-title"><i class="fa-solid fa-qrcode"></i> Scan to Pay</h2>
+
+          <!-- Highlighted Amount Card -->
+          <div class="amount-highlight-card">
+            <span class="amount-label"><i class="fa-solid fa-indian-rupee-sign"></i> Amount to Pay</span>
+            <span class="amount-value">₹300/-</span>
+          </div>
+
+          <div class="qr-frame-wrapper">
+            <div class="qr-border-corner top-left"></div>
+            <div class="qr-border-corner top-right"></div>
+            <div class="qr-border-corner bottom-left"></div>
+            <div class="qr-border-corner bottom-right"></div>
+
+            <div class="qr-container">
+              <!-- QR Code Image generated dynamically -->
+              <img id="qr-code-img" src="" alt="UPI QR Code" class="qr-code">
+              <!-- Center logo in QR Code (Visual Overlay) -->
+              <div id="qr-loader" class="qr-loader">
+                <div class="spinner"></div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="upi-apps-logos">
+            <img src="gpay.png" alt="Google Pay" class="upi-logo-img" title="Google Pay">
+            <img src="phonepay.png" alt="PhonePe" class="upi-logo-img" title="PhonePe">
+            <img src="amazonpay.png" alt="Amazon Pay" class="upi-logo-img" title="Amazon Pay">
+            <img src="paytm.png" alt="Paytm" class="upi-logo-img" title="Paytm">
+          </div>
+        </section>
+
+        <!-- Right Side: Form Panel -->
+        <section class="form-panel">
+          <h2 class="section-title"><i class="fa-solid fa-shield-halved"></i> Verify Transaction</h2>
+          <p class="section-desc">Fill in your payment details to confirm the transaction.</p>
+
+          <form id="transaction-form" novalidate>
+            <!-- Name Input -->
+            <div class="input-group">
+              <label for="user-name" class="input-label">Full Name</label>
+              <div class="input-wrapper">
+                <i class="fa-regular fa-user field-icon"></i>
+                <input type="text" id="user-name" name="name" required placeholder="Enter your full name">
+              </div>
+              <span class="error-msg" id="name-error">Please enter your name</span>
+            </div>
+
+            <!-- UPI ID Input -->
+            <div class="input-group">
+              <label for="user-upi" class="input-label">Your UPI ID</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-at field-icon"></i>
+                <input type="text" id="user-upi" name="upiId" required placeholder="example@upi">
+              </div>
+              <span class="error-msg" id="upi-error">Please enter a valid UPI ID (e.g., username@bank)</span>
+            </div>
+
+            <!-- Transaction ID Input -->
+            <div class="input-group">
+              <label for="user-txn" class="input-label">Transaction ID (UTR / Ref No.)</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-receipt field-icon"></i>
+                <input type="text" id="user-txn" name="transactionId" required placeholder="12-digit number">
+              </div>
+              <p class="helper-text">Usually a 12-digit reference number from your bank SMS/receipt.</p>
+              <span class="error-msg" id="txn-error">Please enter a valid 12-digit transaction ID</span>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submit-btn" class="submit-btn">
+              <span>Submit Details</span>
+              <i class="fa-solid fa-circle-check"></i>
+            </button>
+          </form>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+
+  <!-- Celebrating Anniversary Thank You Modal -->
+  <div id="thank-you-overlay" class="thank-you-overlay">
+    <div class="thank-you-modal">
+      <!-- Fireworks / Confetti Container inside modal -->
+      <div class="modal-celebration-graphics">
+        <div class="celebration-badge"><i class="fa-solid fa-award"></i></div>
+      </div>
+
+      <h2 class="thank-you-title">Thank You!</h2>
+      <p class="thank-you-text">
+        Your payment details have been successfully recorded. We deeply appreciate your support on our 6th Anniversary!
+      </p>
+
+      <div class="thank-you-animation-container">
+        <!-- Floating bubbles, sparkles, or icons -->
+        <span class="animated-icon"><i class="fa-solid fa-heart"></i></span>
+        <span class="animated-icon"><i class="fa-solid fa-cake-candles"></i></span>
+        <span class="animated-icon"><i class="fa-solid fa-gift"></i></span>
+        <span class="animated-icon"><i class="fa-solid fa-champagne-glasses"></i></span>
+      </div>
+
+      <div class="receipt-summary">
+        <div class="receipt-row">
+          <span>Amount Paid:</span>
+          <strong class="amount-paid">₹300/-</strong>
+        </div>
+        <div class="receipt-row">
+          <span>Name:</span>
+          <strong id="summary-name">-</strong>
+        </div>
+        <div class="receipt-row">
+          <span>Transaction ID:</span>
+          <strong id="summary-txn">-</strong>
+        </div>
+        <div class="receipt-row">
+          <span>Status:</span>
+          <span class="status-verified"><i class="fa-solid fa-circle-check"></i> Recorded</span>
+        </div>
+      </div>
+
+      <button id="close-modal-btn" class="close-modal-btn">
+        Close & Return
+      </button>
+    </div>
+  </div>
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- Custom Logic Script -->
+  <script src="app.js"></script>
+</body>
+
+</html>
